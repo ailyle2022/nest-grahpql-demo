@@ -12,7 +12,7 @@ export class ProductStyleService {
   create(createProductStyleInput: CreateProductStyleInput) {
     const productStyle = new ProductStyle()
     productStyle.id = this.id++
-    productStyle.name = "test"
+    productStyle.name = createProductStyleInput.name
     console.log(productStyle)
     this.productStyles.push(productStyle)
     return productStyle
