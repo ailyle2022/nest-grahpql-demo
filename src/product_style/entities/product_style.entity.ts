@@ -8,6 +8,9 @@ export class ProductStyle {
   @Field(() => String, { description: 'Product Style Name' })
   name: string;
 
+  @Field(() => String, { description: 'Product Style Name' })
+  style_sku: string;
+
   /*
   @Field(() => String, { description: 'Product Style SKU' })
   style_sku: string;

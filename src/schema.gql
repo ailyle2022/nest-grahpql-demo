@@ -21,6 +21,9 @@ type ProductStyle {
 
   """Product Style Name"""
   name: String!
+
+  """Product Style Name"""
+  style_sku: String!
 }
 
 type Query {
