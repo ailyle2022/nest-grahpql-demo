@@ -22,8 +22,38 @@ type ProductStyle {
   """Product Style Name"""
   name: String!
 
-  """Product Style Name"""
-  style_sku: String!
+  """Product Style SKU"""
+  style_sku: String
+
+  """Product Style Slug"""
+  style_slug: String
+
+  """Product Style Display Name CN"""
+  style_display_name_cn: String
+
+  """Product Style Display Name CN2"""
+  style_display_name_cn2: String
+
+  """Product Style Short Description CN"""
+  style_short_description_cn: String
+
+  """Product Style Description CN"""
+  style_description_cn: String
+
+  """Product Style Meta Title CN"""
+  style_meta_title_cn: String
+
+  """Product Style Meta Description CN"""
+  style_meta_description_cn: String
+
+  """Product Style Product Type"""
+  style_product_type: String
+
+  """Product Style Product SubType"""
+  style_product_sub_type: String
+
+  """Product Style Price"""
+  price: Int
 }
 
 type Query {
@@ -42,7 +72,6 @@ type Mutation {
   createBook(createBookInput: CreateBookInput!): Book!
   updateBook(updateBookInput: UpdateBookInput!): Book!
   removeBook(id: String!): Book!
-  createProductStyle(createProductStyleInput: CreateProductStyleInput!): ProductStyle!
 }
 
 input CreateUserInput {
@@ -71,9 +100,4 @@ input UpdateBookInput {
   """Example field (placeholder)"""
   user_id: String!
   id: String!
-}
-
-input CreateProductStyleInput {
-  """"""
-  name: String!
 }

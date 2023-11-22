@@ -8,11 +8,6 @@ import { UpdateProductStyleInput } from './dto/update-product_style.input';
 export class ProductStyleResolver {
   constructor(private readonly productStyleService: ProductStyleService) { }
 
-  @Mutation(() => ProductStyle)
-  createProductStyle(@Args('createProductStyleInput') createProductStyleInput: CreateProductStyleInput) {
-    return this.productStyleService.create(createProductStyleInput);
-  }
-
   @Query(() => [ProductStyle], { name: 'productStyles' })
   findAll() {
     return this.productStyleService.findAll();

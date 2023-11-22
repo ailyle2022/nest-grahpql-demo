@@ -7,23 +7,9 @@ import { catchError } from 'rxjs';
 
 @Injectable()
 export class ProductStyleService {
-
-  productStyles: ProductStyle[] = []
-  id: number = 1
-
-
   constructor(
     @Inject('PRODUCT_SERVICE_TCP') private productService: ClientProxy,
   ) { }
-
-  create(createProductStyleInput: CreateProductStyleInput) {
-    const productStyle = new ProductStyle()
-    productStyle.id = this.id++
-    productStyle.name = createProductStyleInput.name
-    console.log(productStyle)
-    this.productStyles.push(productStyle)
-    return productStyle
-  }
 
   async findAll() {
     let result = await this.productService
@@ -31,18 +17,10 @@ export class ProductStyleService {
       .pipe(catchError(err => { throw new RpcException(new BadRequestException(err)) }))
       .toPromise()
 
-      console.log(result)
-
     return result
   }
 
   async findOne(id: number) {
-    /*
-    const productStyle = this.productStyles.filter((item)=>{
-      return item.id === id
-    })
-    return productStyle[0]
-    */
     let result = await this.productService
       .send({ cmd: 'findAll' }, id)
       .pipe(catchError(err => { throw new RpcException(new BadRequestException(err)) }))
