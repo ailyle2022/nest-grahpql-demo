@@ -9,6 +9,7 @@ import { BadRequestException, UnauthorizedException } from '@nestjs/common';
 export class UserResolver {
   constructor(private readonly userService: UserService) { }
 
+  /*
   @Mutation(() => User)
   createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
     throw new BadRequestException('test')
@@ -34,4 +35,5 @@ export class UserResolver {
   removeUser(@Args('id', { type: () => Int }) id: string) {
     return this.userService.remove(id);
   }
+  */
 }

@@ -9,12 +9,16 @@ export class ProductStyleResolver {
   constructor(private readonly productStyleService: ProductStyleService) { }
 
   @Query(() => [ProductStyle], { name: 'productStyles' })
-  findAll() {
-    return this.productStyleService.findAll();
+  findAll(
+    @Args('keywords', { type: () => String }) keywords: string
+  ) {
+    return this.productStyleService.findAll(keywords);
   }
 
   @Query(() => ProductStyle, { name: 'productStyle' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.productStyleService.findOne(id);
+  findOneByStyleSku(
+    @Args('style_sku', { type: () => String }) style_sku: string,
+  ) {
+    return this.productStyleService.findOneByStyleSku(style_sku);
   }
 }

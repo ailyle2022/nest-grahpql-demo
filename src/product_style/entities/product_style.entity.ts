@@ -1,4 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ProductColor } from 'src/product_color/entities/product_color.entity';
+import { OneToMany } from 'typeorm';
 
 @ObjectType()
 export class ProductStyle {
@@ -8,7 +10,7 @@ export class ProductStyle {
   @Field(() => String, { description: 'Product Style Name' })
   name: string;
 
-  @Field(() => String, { nullable: true, description: 'Product Style SKU'})
+  @Field(() => String, { nullable: true, description: 'Product Style SKU' })
   style_sku: string;
 
   @Field(() => String, { nullable: true, description: 'Product Style Slug' })
@@ -40,4 +42,14 @@ export class ProductStyle {
 
   @Field(() => Int, { nullable: true, description: 'Product Style Price' })
   price: number;
+
+  @OneToMany(() => ProductColor, color => color.style)
+  @Field((type) => ProductColor, { nullable: true, description: 'Product Color' })
+  colors: ProductColor[]
+
+  @Field({ nullable: true })
+  created_at: string;
+
+  @Field({ nullable: true })
+  updated_at: string;
 }

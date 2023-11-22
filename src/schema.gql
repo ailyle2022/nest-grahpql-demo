@@ -2,17 +2,77 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Book {
-  """Example field (placeholder)"""
-  id: String!
-  name: String!
-  user: User
-}
-
 type User {
   id: String!
   name: String!
   books: String
+}
+
+type ProductColor {
+  """Product Color Id"""
+  id: Int!
+
+  """Product Id"""
+  product_id: String
+
+  """Product Id"""
+  product_slug: String
+
+  """Product Id"""
+  style_slug: String
+
+  """Product Id"""
+  style_sku: String
+
+  """Product Style"""
+  style: ProductStyle
+
+  """Color Name"""
+  color_name: String
+
+  """Gender"""
+  gender: String
+
+  """Product Name"""
+  product_name: String
+
+  """Product Color Price"""
+  price: Int
+
+  """PDP Sort"""
+  pdp_sort: Int
+
+  """Sort"""
+  sort: Int
+
+  """Purchase limit"""
+  purchase_limit: Int
+
+  """Photoshoot Model Ids"""
+  photoshoot_model_ids: String
+
+  """Size Chart Id"""
+  size_chart_id: String
+
+  """Preview"""
+  preview: Int
+
+  """Publish"""
+  publish: Int
+
+  """Enable At Website"""
+  enable_at_website: Int
+
+  """Enable At Wechat Mp"""
+  enable_at_wcmp: Int
+
+  """Internal Tags"""
+  internal_tags: String
+
+  """Search Keywords"""
+  search_keywords: String
+  created_at: String
+  updated_at: String
 }
 
 type ProductStyle {
@@ -54,50 +114,15 @@ type ProductStyle {
 
   """Product Style Price"""
   price: Int
+
+  """Product Color"""
+  colors: ProductColor
+  created_at: String
+  updated_at: String
 }
 
 type Query {
-  users: [User!]!
-  user(id: String!): User!
-  books: [Book!]!
-  book(id: String!): Book!
-  productStyles: [ProductStyle!]!
-  productStyle(id: Int!): ProductStyle!
-}
-
-type Mutation {
-  createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User!
-  createBook(createBookInput: CreateBookInput!): Book!
-  updateBook(updateBookInput: UpdateBookInput!): Book!
-  removeBook(id: String!): Book!
-}
-
-input CreateUserInput {
-  """Example field (placeholder)"""
-  name: String!
-}
-
-input UpdateUserInput {
-  """Example field (placeholder)"""
-  name: String
-  id: String!
-}
-
-input CreateBookInput {
-  """Example field (placeholder)"""
-  name: String!
-
-  """Example field (placeholder)"""
-  user_id: String!
-}
-
-input UpdateBookInput {
-  """Example field (placeholder)"""
-  name: String
-
-  """Example field (placeholder)"""
-  user_id: String!
-  id: String!
+  productStyles(keywords: String!): [ProductStyle!]!
+  productStyle(style_sku: String!): ProductStyle!
+  productColors: [ProductColor!]!
 }

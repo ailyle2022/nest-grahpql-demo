@@ -8,6 +8,7 @@ import { UpdateBookInput } from './dto/update-book.input';
 export class BookResolver {
   constructor(private readonly bookService: BookService) {}
 
+  /*
   @Mutation(() => Book)
   createBook(@Args('createBookInput') createBookInput: CreateBookInput) {
     return this.bookService.create(createBookInput);
@@ -32,4 +33,5 @@ export class BookResolver {
   removeBook(@Args('id', { type: () => String }) id: string) {
     return this.bookService.remove(id);
   }
+  */
 }

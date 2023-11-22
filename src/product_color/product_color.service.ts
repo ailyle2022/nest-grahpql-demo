@@ -1,19 +1,18 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { CreateProductStyleInput } from './dto/create-product_style.input';
-import { UpdateProductStyleInput } from './dto/update-product_style.input';
-import { ProductStyle } from './entities/product_style.entity';
+import { CreateProductColorInput } from './dto/create-product_color.input';
+import { UpdateProductColorInput } from './dto/update-product_color.input';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { catchError } from 'rxjs';
 
 @Injectable()
-export class ProductStyleService {
+export class ProductColorService {
   constructor(
     @Inject('PRODUCT_SERVICE_TCP') private productService: ClientProxy,
   ) { }
 
-  async findAll(keywords: string) {
+  async findAll() {
     let result = await this.productService
-      .send({ cmd: 'findAllStyle' }, {})
+      .send({ cmd: 'findAllColor' }, {})
       .pipe(catchError(err => { throw new RpcException(new BadRequestException(err)) }))
       .toPromise()
 
@@ -40,5 +39,4 @@ export class ProductStyleService {
       throw new RpcException(new BadRequestException(message))
     }
   }
-
 }
