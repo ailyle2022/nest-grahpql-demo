@@ -11,6 +11,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ProductColorModule } from './product_color/product_color.module';
 import { ProductSizeModule } from './product_size/product_size.module';
+import { ProductAssetModule } from './product_asset/product_asset.module';
+import { ProductColorLangModule } from './product_color_lang/product_color_lang.module';
 
 
 @Module({
@@ -42,7 +44,9 @@ import { ProductSizeModule } from './product_size/product_size.module';
     BookModule,
     ProductStyleModule,
     ProductColorModule,
-    ProductSizeModule
+    ProductSizeModule,
+    ProductAssetModule,
+    ProductColorLangModule
   ],
   controllers: [AppController],
   providers: [AppService],

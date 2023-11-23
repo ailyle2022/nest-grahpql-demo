@@ -8,6 +8,53 @@ type User {
   books: String
 }
 
+type ProductAsset {
+  """Product Size Id"""
+  id: Int!
+
+  """Product Id"""
+  product_id: String
+
+  """Local URL"""
+  local_url: String
+
+  """Is Video?"""
+  is_video: Boolean
+
+  """Enable?"""
+  enable: Boolean
+
+  """Sort"""
+  sort: Float
+
+  """Is global?"""
+  is_global: Boolean
+
+  """Product Color"""
+  product_color: ProductColor
+  created_at: String
+  updated_at: String
+}
+
+type ProductColorLang {
+  """Product Color Lang Id"""
+  id: Int!
+
+  """Color Name"""
+  color_name: String
+
+  """Color Name CN"""
+  color_name_cn: String
+
+  """Filter_attributes"""
+  filter_attributes: String
+
+  """Product Color"""
+  product_color: ProductColor
+  created_at: String
+  updated_at: String
+}
+
 type ProductSize {
   """Product Size Id"""
   id: Int!
@@ -51,9 +98,6 @@ type ProductColor {
 
   """Product Id"""
   style_sku: String
-
-  """Product Style"""
-  product_style: ProductStyle
 
   """Color Name"""
   color_name: String
@@ -100,8 +144,17 @@ type ProductColor {
   """Search Keywords"""
   search_keywords: String
 
+  """Product Color Lang"""
+  product_color_lang: ProductColorLang
+
+  """Product Style"""
+  product_style: ProductStyle
+
   """Product Size"""
   product_sizes: [ProductSize!]
+
+  """Product Size"""
+  product_assets: [ProductAsset!]
   created_at: String
   updated_at: String
 }
@@ -158,12 +211,20 @@ type Query {
   productStyleByKeywords(style_sku: String!): ProductStyle!
   productColors: [ProductColor!]!
   productSize(id: Int!): ProductSize!
+  productAsset(id: Int!): ProductAsset!
+  productColorLang(id: Int!): ProductColorLang!
 }
 
 type Mutation {
   createProductSize(createProductSizeInput: CreateProductSizeInput!): ProductSize!
   updateProductSize(updateProductSizeInput: UpdateProductSizeInput!): ProductSize!
   removeProductSize(id: Int!): ProductSize!
+  createProductAsset(createProductAssetInput: CreateProductAssetInput!): ProductAsset!
+  updateProductAsset(updateProductAssetInput: UpdateProductAssetInput!): ProductAsset!
+  removeProductAsset(id: Int!): ProductAsset!
+  createProductColorLang(createProductColorLangInput: CreateProductColorLangInput!): ProductColorLang!
+  updateProductColorLang(updateProductColorLangInput: UpdateProductColorLangInput!): ProductColorLang!
+  removeProductColorLang(id: Int!): ProductColorLang!
 }
 
 input CreateProductSizeInput {
@@ -172,6 +233,28 @@ input CreateProductSizeInput {
 }
 
 input UpdateProductSizeInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateProductAssetInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProductAssetInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateProductColorLangInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProductColorLangInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!

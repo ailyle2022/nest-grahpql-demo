@@ -1,7 +1,9 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ProductAsset } from 'src/product_asset/entities/product_asset.entity';
+import { ProductColorLang } from 'src/product_color_lang/entities/product_color_lang.entity';
 import { ProductSize } from 'src/product_size/entities/product_size.entity';
 import { ProductStyle } from 'src/product_style/entities/product_style.entity';
-import { JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+import { JoinColumn, ManyToOne, OneToMany, OneToOne } from 'typeorm';
 
 @ObjectType()
 export class ProductColor {
@@ -19,11 +21,6 @@ export class ProductColor {
 
   @Field(() => String, { nullable: true, description: 'Product Id' })
   style_sku: string;
-
-  @ManyToOne(() => ProductStyle, product_style => product_style.product_colors)
-  @JoinColumn({ name: 'style_sku', referencedColumnName: 'style_sku' })
-  @Field((type) => ProductStyle, { nullable: true, description: 'Product Style' })
-  product_style: ProductStyle;
 
   @Field(() => String, { nullable: true, description: 'Color Name' })
   color_name: string;
@@ -70,10 +67,25 @@ export class ProductColor {
   @Field(() => String, { nullable: true, description: 'Search Keywords' })
   search_keywords: string;
 
+  @OneToOne(() => ProductColorLang, lang => lang.product_color)
+  @JoinColumn({ name: 'color_name', referencedColumnName: 'color_name' })
+  @Field((type) => ProductColorLang, { nullable: true, description: 'Product Color Lang' })
+  product_color_lang: ProductColorLang;
+
+  @ManyToOne(() => ProductStyle, product_style => product_style.product_colors)
+  @JoinColumn({ name: 'style_sku', referencedColumnName: 'style_sku' })
+  @Field((type) => ProductStyle, { nullable: true, description: 'Product Style' })
+  product_style: ProductStyle;
+
   @OneToMany(() => ProductSize, size => size.product_color)
   @Field((type) => [ProductSize], { nullable: true, description: 'Product Size' })
   @JoinColumn({ name: "product_id" })
   product_sizes?: ProductSize[];
+
+  @OneToMany(() => ProductAsset, asset => asset.product_color)
+  @Field((type) => [ProductAsset], { nullable: true, description: 'Product Size' })
+  @JoinColumn({ name: "product_id" })
+  product_assets?: ProductAsset[];
 
   @Field({ nullable: true })
   created_at: string;
