@@ -10,6 +10,7 @@ import { ProductStyleModule } from './product_style/product_style.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { ProductColorModule } from './product_color/product_color.module';
+import { ProductSizeModule } from './product_size/product_size.module';
 
 
 @Module({
@@ -40,7 +41,8 @@ import { ProductColorModule } from './product_color/product_color.module';
     UserModule,
     BookModule,
     ProductStyleModule,
-    ProductColorModule
+    ProductColorModule,
+    ProductSizeModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,6 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ProductSize } from 'src/product_size/entities/product_size.entity';
 import { ProductStyle } from 'src/product_style/entities/product_style.entity';
-import { JoinColumn, ManyToOne } from 'typeorm';
+import { JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 @ObjectType()
 export class ProductColor {
@@ -68,6 +69,11 @@ export class ProductColor {
 
   @Field(() => String, { nullable: true, description: 'Search Keywords' })
   search_keywords: string;
+
+  @OneToMany(() => ProductSize, size => size.product_color)
+  @Field((type) => [ProductSize], { nullable: true, description: 'Product Size' })
+  @JoinColumn({ name: "product_id" })
+  product_sizes?: ProductSize[];
 
   @Field({ nullable: true })
   created_at: string;

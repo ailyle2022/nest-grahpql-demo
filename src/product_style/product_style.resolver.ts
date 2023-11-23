@@ -12,7 +12,9 @@ export class ProductStyleResolver {
   async findAll(
     //@Args('keywords', { type: () => String }) keywords: string
   ) {
-    const result = await this.productStyleService.findAll({}, 9999, 0, ['product_colors'])
+    const result = await this.productStyleService.findAll({}, 9999, 0, 
+      ['product_colors','product_colors.product_color_lang','product_colors.product_assets','product_colors.product_sizes']
+      )
     return result
   }
 
@@ -20,7 +22,9 @@ export class ProductStyleResolver {
   async findOneByStyleSku(
     @Args('style_sku', { type: () => String }) style_sku: string,
   ) {
-    const result = await this.productStyleService.findAll({ style_sku: style_sku }, 1, 0, ['product_colors'])
+    const result = await this.productStyleService.findAll({ style_sku: style_sku }, 1, 0, 
+      ['product_colors','product_colors.product_color_lang','product_colors.product_assets','product_colors.product_sizes']
+      )
     return result[0]
   }
 
@@ -28,7 +32,9 @@ export class ProductStyleResolver {
   async findOneByStyleKeywords(
     @Args('style_sku', { type: () => String }) style_sku: string,
   ) {
-    const result = await this.productStyleService.findAll({ style_sku: style_sku }, 1, 0, ['product_colors'])
+    const result = await this.productStyleService.findAll({ style_sku: style_sku }, 1, 0, 
+      ['product_colors','product_colors.product_color_lang','product_colors.product_assets','product_colors.product_sizes']
+      )
     return result[0]
   }
 }

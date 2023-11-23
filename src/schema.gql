@@ -8,6 +8,34 @@ type User {
   books: String
 }
 
+type ProductSize {
+  """Product Size Id"""
+  id: Int!
+
+  """Label"""
+  label: String
+
+  """EAN"""
+  ean: String
+
+  """US Size"""
+  us_size: String
+
+  """CN Size"""
+  cn_size: String
+
+  """Product Id"""
+  product_id: String
+
+  """Product Slug"""
+  product_slug: String
+
+  """Product Color"""
+  product_color: ProductColor
+  created_at: String
+  updated_at: String
+}
+
 type ProductColor {
   """Product Color Id"""
   id: Int!
@@ -71,6 +99,9 @@ type ProductColor {
 
   """Search Keywords"""
   search_keywords: String
+
+  """Product Size"""
+  product_sizes: [ProductSize!]
   created_at: String
   updated_at: String
 }
@@ -126,4 +157,22 @@ type Query {
   productStyleBySku(style_sku: String!): ProductStyle!
   productStyleByKeywords(style_sku: String!): ProductStyle!
   productColors: [ProductColor!]!
+  productSize(id: Int!): ProductSize!
+}
+
+type Mutation {
+  createProductSize(createProductSizeInput: CreateProductSizeInput!): ProductSize!
+  updateProductSize(updateProductSizeInput: UpdateProductSizeInput!): ProductSize!
+  removeProductSize(id: Int!): ProductSize!
+}
+
+input CreateProductSizeInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateProductSizeInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
