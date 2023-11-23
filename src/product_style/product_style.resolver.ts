@@ -9,16 +9,26 @@ export class ProductStyleResolver {
   constructor(private readonly productStyleService: ProductStyleService) { }
 
   @Query(() => [ProductStyle], { name: 'productStyles' })
-  findAll(
-    @Args('keywords', { type: () => String }) keywords: string
+  async findAll(
+    //@Args('keywords', { type: () => String }) keywords: string
   ) {
-    return this.productStyleService.findAll(keywords);
+    const result = await this.productStyleService.findAll({}, 9999, 0, ['product_colors'])
+    return result
   }
 
-  @Query(() => ProductStyle, { name: 'productStyle' })
-  findOneByStyleSku(
+  @Query(() => ProductStyle, { name: 'productStyleBySku' })
+  async findOneByStyleSku(
     @Args('style_sku', { type: () => String }) style_sku: string,
   ) {
-    return this.productStyleService.findOneByStyleSku(style_sku);
+    const result = await this.productStyleService.findAll({ style_sku: style_sku }, 1, 0, ['product_colors'])
+    return result[0]
+  }
+
+  @Query(() => ProductStyle, { name: 'productStyleByKeywords' })
+  async findOneByStyleKeywords(
+    @Args('style_sku', { type: () => String }) style_sku: string,
+  ) {
+    const result = await this.productStyleService.findAll({ style_sku: style_sku }, 1, 0, ['product_colors'])
+    return result[0]
   }
 }

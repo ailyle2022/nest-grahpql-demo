@@ -19,10 +19,10 @@ export class ProductColor {
   @Field(() => String, { nullable: true, description: 'Product Id' })
   style_sku: string;
 
-  @ManyToOne(() => ProductStyle, product_style => product_style.colors)
+  @ManyToOne(() => ProductStyle, product_style => product_style.product_colors)
   @JoinColumn({ name: 'style_sku', referencedColumnName: 'style_sku' })
   @Field((type) => ProductStyle, { nullable: true, description: 'Product Style' })
-  style: ProductStyle;
+  product_style: ProductStyle;
 
   @Field(() => String, { nullable: true, description: 'Color Name' })
   color_name: string;

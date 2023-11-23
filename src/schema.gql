@@ -25,7 +25,7 @@ type ProductColor {
   style_sku: String
 
   """Product Style"""
-  style: ProductStyle
+  product_style: ProductStyle
 
   """Color Name"""
   color_name: String
@@ -116,13 +116,14 @@ type ProductStyle {
   price: Int
 
   """Product Color"""
-  colors: ProductColor
+  product_colors: [ProductColor!]
   created_at: String
   updated_at: String
 }
 
 type Query {
-  productStyles(keywords: String!): [ProductStyle!]!
-  productStyle(style_sku: String!): ProductStyle!
+  productStyles: [ProductStyle!]!
+  productStyleBySku(style_sku: String!): ProductStyle!
+  productStyleByKeywords(style_sku: String!): ProductStyle!
   productColors: [ProductColor!]!
 }
