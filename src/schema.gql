@@ -202,7 +202,7 @@ type ProductStyle {
 type Query {
   productStyles: [ProductStyle!]!
   productStyleBySku(style_sku: String!): ProductStyle!
-  productStyleByKeywords(keywords: String!): ProductStyle!
+  productStyleByKeywords(keywords: String!): [ProductStyle!]!
   productColors: [ProductColor!]!
   productSize(id: Int!): ProductSize!
   productAsset(id: Int!): ProductAsset!

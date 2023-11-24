@@ -8,7 +8,7 @@ export class ProductStyleResolver {
 
   @Query(() => [ProductStyle], { name: 'productStyles' })
   async findAll() {
-    const result = await this.productStyleService.findAll({}, {}, 1, 0, []);
+    const result = await this.productStyleService.findAll({}, {}, 0, 0, []);
     return result;
   }
 
@@ -31,8 +31,8 @@ export class ProductStyleResolver {
     return result[0];
   }
 
-  @Query(() => ProductStyle, { name: 'productStyleByKeywords' })
-  async findOneByStyleKeywords(
+  @Query(() => [ProductStyle], { name: 'productStyleByKeywords' })
+  async findAllyStyleKeywords(
     @Args('keywords', { type: () => String }) keywords: string,
   ) {
     const result = await this.productStyleService.findAll(
