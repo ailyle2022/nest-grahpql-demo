@@ -210,46 +210,5 @@ type Query {
 }
 
 type Mutation {
-  createProductSize(createProductSizeInput: CreateProductSizeInput!): ProductSize!
-  updateProductSize(updateProductSizeInput: UpdateProductSizeInput!): ProductSize!
-  removeProductSize(id: Int!): ProductSize!
-  createProductAsset(createProductAssetInput: CreateProductAssetInput!): ProductAsset!
-  updateProductAsset(updateProductAssetInput: UpdateProductAssetInput!): ProductAsset!
-  removeProductAsset(id: Int!): ProductAsset!
-  createProductColorLang(createProductColorLangInput: CreateProductColorLangInput!): ProductColorLang!
-  updateProductColorLang(updateProductColorLangInput: UpdateProductColorLangInput!): ProductColorLang!
-  removeProductColorLang(id: Int!): ProductColorLang!
-}
-
-input CreateProductSizeInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateProductSizeInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
-}
-
-input CreateProductAssetInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateProductAssetInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
-}
-
-input CreateProductColorLangInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateProductColorLangInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  findAll: ProductColorLang!
 }
