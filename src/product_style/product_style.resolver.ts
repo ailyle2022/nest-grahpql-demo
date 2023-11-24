@@ -1,7 +1,6 @@
 import { Resolver, Query, Args } from '@nestjs/graphql';
 import { ProductStyleService } from './product_style.service';
 import { ProductStyle } from './entities/product_style.entity';
-import { Like } from 'typeorm';
 
 @Resolver(() => ProductStyle)
 export class ProductStyleResolver {
@@ -9,7 +8,7 @@ export class ProductStyleResolver {
 
   @Query(() => [ProductStyle], { name: 'productStyles' })
   async findAll() {
-    const result = await this.productStyleService.findAll({}, 9999, 0, []);
+    const result = await this.productStyleService.findAll({}, {}, 1, 0, []);
     return result;
   }
 
@@ -19,6 +18,7 @@ export class ProductStyleResolver {
   ) {
     const result = await this.productStyleService.findAll(
       { style_sku: style_sku },
+      {},
       1,
       0,
       [
@@ -36,10 +36,17 @@ export class ProductStyleResolver {
     @Args('keywords', { type: () => String }) keywords: string,
   ) {
     const result = await this.productStyleService.findAll(
+      {},
       {
-        name: Like('%' + keywords + '%'),
+        name: keywords,
+        style_display_name_cn: keywords,
+        style_display_name_cn2: keywords,
+        style_short_description_cn: keywords,
+        style_description_cn: keywords,
+        style_meta_title_cn: keywords,
+        style_meta_description_cn: keywords,
       },
-      1,
+      0,
       0,
       [
         'product_colors',
@@ -48,6 +55,6 @@ export class ProductStyleResolver {
         'product_colors.product_sizes',
       ],
     );
-    return result[0];
+    return result;
   }
 }

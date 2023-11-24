@@ -8,9 +8,10 @@ export class ProductStyleService {
     @Inject('PRODUCT_SERVICE_TCP') private productService: ClientProxy,
   ) {}
 
-  async findAll(where, take, skip, relations) {
+  async findAll(where, search_key_words, take, skip, relations) {
     const payload = {
       where,
+      search_key_words,
       take,
       skip,
       relations,
