@@ -9,7 +9,10 @@ export class ProductSizeResolver {
   constructor(private readonly productSizeService: ProductSizeService) {}
 
   @Mutation(() => ProductSize)
-  createProductSize(@Args('createProductSizeInput') createProductSizeInput: CreateProductSizeInput) {
+  createProductSize(
+    @Args('createProductSizeInput')
+    createProductSizeInput: CreateProductSizeInput,
+  ) {
     return this.productSizeService.create(createProductSizeInput);
   }
 
@@ -24,8 +27,14 @@ export class ProductSizeResolver {
   }
 
   @Mutation(() => ProductSize)
-  updateProductSize(@Args('updateProductSizeInput') updateProductSizeInput: UpdateProductSizeInput) {
-    return this.productSizeService.update(updateProductSizeInput.id, updateProductSizeInput);
+  updateProductSize(
+    @Args('updateProductSizeInput')
+    updateProductSizeInput: UpdateProductSizeInput,
+  ) {
+    return this.productSizeService.update(
+      updateProductSizeInput.id,
+      updateProductSizeInput,
+    );
   }
 
   @Mutation(() => ProductSize)

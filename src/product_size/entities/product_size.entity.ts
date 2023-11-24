@@ -25,9 +25,12 @@ export class ProductSize {
   @Field(() => String, { nullable: true, description: 'Product Slug' })
   product_slug: string;
 
-  @ManyToOne(() => ProductColor, product_color => product_color.product_sizes)
+  @ManyToOne(() => ProductColor, (product_color) => product_color.product_sizes)
   @JoinColumn({ name: 'product_id', referencedColumnName: 'product_id' })
-  @Field((type) => ProductColor, { nullable: true, description: 'Product Color' })
+  @Field(() => ProductColor, {
+    nullable: true,
+    description: 'Product Color',
+  })
   product_color: ProductColor;
 
   @Field({ nullable: true })

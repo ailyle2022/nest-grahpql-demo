@@ -25,9 +25,12 @@ export class ProductAsset {
   @Field(() => Boolean, { nullable: true, description: 'Is global?' })
   is_global: boolean;
 
-  @ManyToOne(() => ProductColor, product_color => product_color.product_sizes)
+  @ManyToOne(() => ProductColor, (product_color) => product_color.product_sizes)
   @JoinColumn({ name: 'product_id', referencedColumnName: 'product_id' })
-  @Field((type) => ProductColor, { nullable: true, description: 'Product Color' })
+  @Field(() => ProductColor, {
+    nullable: true,
+    description: 'Product Color',
+  })
   product_color: ProductColor;
 
   @Field({ nullable: true })

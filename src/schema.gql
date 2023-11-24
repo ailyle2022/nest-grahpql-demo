@@ -2,12 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  id: String!
-  name: String!
-  books: String
-}
-
 type ProductAsset {
   """Product Size Id"""
   id: Int!
@@ -208,7 +202,7 @@ type ProductStyle {
 type Query {
   productStyles: [ProductStyle!]!
   productStyleBySku(style_sku: String!): ProductStyle!
-  productStyleByKeywords(style_sku: String!): ProductStyle!
+  productStyleByKeywords(keywords: String!): ProductStyle!
   productColors: [ProductColor!]!
   productSize(id: Int!): ProductSize!
   productAsset(id: Int!): ProductAsset!

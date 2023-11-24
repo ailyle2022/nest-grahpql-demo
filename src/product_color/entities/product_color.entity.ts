@@ -67,24 +67,39 @@ export class ProductColor {
   @Field(() => String, { nullable: true, description: 'Search Keywords' })
   search_keywords: string;
 
-  @OneToOne(() => ProductColorLang, lang => lang.product_color)
+  @OneToOne(() => ProductColorLang, (lang) => lang.product_color)
   @JoinColumn({ name: 'color_name', referencedColumnName: 'color_name' })
-  @Field((type) => ProductColorLang, { nullable: true, description: 'Product Color Lang' })
+  @Field(() => ProductColorLang, {
+    nullable: true,
+    description: 'Product Color Lang',
+  })
   product_color_lang: ProductColorLang;
 
-  @ManyToOne(() => ProductStyle, product_style => product_style.product_colors)
+  @ManyToOne(
+    () => ProductStyle,
+    (product_style) => product_style.product_colors,
+  )
   @JoinColumn({ name: 'style_sku', referencedColumnName: 'style_sku' })
-  @Field((type) => ProductStyle, { nullable: true, description: 'Product Style' })
+  @Field(() => ProductStyle, {
+    nullable: true,
+    description: 'Product Style',
+  })
   product_style: ProductStyle;
 
-  @OneToMany(() => ProductSize, size => size.product_color)
-  @Field((type) => [ProductSize], { nullable: true, description: 'Product Size' })
-  @JoinColumn({ name: "product_id" })
+  @OneToMany(() => ProductSize, (size) => size.product_color)
+  @Field(() => [ProductSize], {
+    nullable: true,
+    description: 'Product Size',
+  })
+  @JoinColumn({ name: 'product_id' })
   product_sizes?: ProductSize[];
 
-  @OneToMany(() => ProductAsset, asset => asset.product_color)
-  @Field((type) => [ProductAsset], { nullable: true, description: 'Product Size' })
-  @JoinColumn({ name: "product_id" })
+  @OneToMany(() => ProductAsset, (asset) => asset.product_color)
+  @Field(() => [ProductAsset], {
+    nullable: true,
+    description: 'Product Size',
+  })
+  @JoinColumn({ name: 'product_id' })
   product_assets?: ProductAsset[];
 
   @Field({ nullable: true })
