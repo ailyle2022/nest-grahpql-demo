@@ -7,7 +7,7 @@ export class ProductStyle {
   @Field(() => Int, { description: 'Product Style Id' })
   id: number;
 
-  @Field(() => String, { description: 'Product Style Name' })
+  @Field(() => String, { nullable: true, description: 'Product Style Name' })
   name: string;
 
   @Field(() => String, { nullable: true, description: 'Product Style SKU' })

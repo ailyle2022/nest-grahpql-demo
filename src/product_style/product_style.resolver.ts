@@ -39,21 +39,18 @@ export class ProductStyleResolver {
       {},
       {
         name: keywords,
+        /*
         style_display_name_cn: keywords,
         style_display_name_cn2: keywords,
         style_short_description_cn: keywords,
         style_description_cn: keywords,
         style_meta_title_cn: keywords,
         style_meta_description_cn: keywords,
+        */
       },
       0,
       0,
-      [
-        'product_colors',
-        'product_colors.product_color_lang',
-        'product_colors.product_assets',
-        'product_colors.product_sizes',
-      ],
+      [],
     );
     return result;
   }

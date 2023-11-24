@@ -158,7 +158,7 @@ type ProductStyle {
   id: Int!
 
   """Product Style Name"""
-  name: String!
+  name: String
 
   """Product Style SKU"""
   style_sku: String
